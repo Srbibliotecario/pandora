@@ -10,6 +10,7 @@ if game.PlaceId == 106142933228137 then
         autock = false,
         autoreb = false,
         rebirthValue = 0, -- Valor inicial padrão
+        automastery = false,
         autoopBasic = false,
         autoopUncommon = false,
         autoopsamurai = false,
@@ -19,7 +20,19 @@ if game.PlaceId == 106142933228137 then
         autoopvolcanic = false,
         autoopmagic = false,
         autoopheaven = false,
-        autoopheaven25 = false
+        autoopheaven25 = false,
+        autoworldspawn = false,
+        autoworldsamurai = false,
+        autoworldsavanna = false,
+        autoworldcyber = false,
+        autoworldtiki = false,
+        autoworldvulcan = false,
+        autoworldmagic = false,
+        autoworldheaven = false,
+        autousepotionclick = false,
+        autousepotiongem = false,
+        autousepotionluck = false,
+        autousepotionrebirth = false
 
     }
 
@@ -37,7 +50,7 @@ if game.PlaceId == 106142933228137 then
                 [1] = AutoFarm.rebirthValue -- Usa o valor dinâmico atualizado
             }
             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
-            wait(3)
+            wait(1)
         end
     end
     
@@ -61,6 +74,15 @@ if game.PlaceId == 106142933228137 then
             return tostring(valor) -- Menor que 1k
         end
     end
+
+
+    function automastery()
+        while AutoFarm.automastery do
+            game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("IncreaseMastery"):InvokeServer()
+           wait(1)
+         end
+     end
+
 
 
 
@@ -209,6 +231,147 @@ if game.PlaceId == 106142933228137 then
            end
        end
 
+       function automastery()
+          while AutoFarm.automastery do
+             game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("IncreaseMastery"):InvokeServer()
+              wait(1)
+           end
+       end
+
+       function autoworldspawn()
+         while AutoFarm.autoworldspawn do
+             local args = {
+                [1] = "Spawn"
+             }
+            
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+              wait(1)
+           end
+       end
+
+       function autoworldsamurai()
+        while AutoFarm.autoworldsamurai do
+            local args = {
+               [1] = "Samurai Land"
+            }
+           
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+             wait(1)
+          end
+      end
+
+      function autoworldsavanna()
+         while AutoFarm.autoworldsavanna do
+             local args = {
+               [1] = "Ancient Ruins"
+             }
+           
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+             wait(1)
+          end
+      end
+
+      function autoworldcyber()
+         while AutoFarm.autoworldcyber do
+             local args = {
+              [1] = "Cyber City"
+             }
+          
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+             wait(1)
+          end
+      end
+
+      function autoworldtiki()
+         while AutoFarm.autoworldtiki do
+            local args = {
+             [1] = "Tiki Island"
+             }
+         
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+              wait(1)
+           end
+       end
+
+       function autoworldvulcan()
+         while AutoFarm.autoworldvulcan do
+             local args = {
+             [1] = "Corrupted Volcano"
+             }
+        
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+              wait(1)
+          end
+      end
+
+      function autoworldmagic()
+         while AutoFarm.autoworldmagic do
+             local args = {
+             [1] = "Magic"
+              }
+       
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+              wait(1)
+          end
+      end
+
+      function autoworldheaven()
+         while AutoFarm.autoworldheaven do
+             local args = {
+             [1] = "Heaven"
+             }
+      
+             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetWorldBoost"):FireServer(unpack(args))
+              wait(1)
+          end
+       end
+
+
+     function autousepotionclick()
+          while AutoFarm.autousepotionclick do
+             local args = {
+                [1] = "Click"
+              }
+            
+              game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UsePotion"):FireServer(unpack(args))
+              wait(1)
+           end
+       end
+
+       function autousepotionluck()
+          while AutoFarm.autousepotionluck do
+             local args = {
+              [1] = "Luck"
+              }
+          
+              game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UsePotion"):FireServer(unpack(args))
+               wait(1)
+           end
+       end
+
+     function autousepotiongem()
+          while AutoFarm.autousepotiongem do
+              local args = {
+                [1] = "Gem"
+              }
+            
+              game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UsePotion"):FireServer(unpack(args))
+               wait(1)
+           end
+       end
+
+     function autousepotionrebirth()
+           while AutoFarm.autousepotionrebirth do
+              local args = {
+                [1] = "Rebirth"
+              }
+            
+              game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UsePotion"):FireServer(unpack(args))
+               wait(1)
+           end
+       end
+
+
 
 
     -- Jogador
@@ -266,6 +429,16 @@ if game.PlaceId == 106142933228137 then
         end
     })
 
+    panTab:AddToggle({
+        Name = "auto mastery",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.automastery = Value
+            if AutoFarm.automastery then
+                spawn(automastery)
+            end
+        end
+    })
 
     local panTab = Window:MakeTab({
         Name = "egg"
@@ -381,6 +554,180 @@ if game.PlaceId == 106142933228137 then
             end
         end
     })
+
+    local panTab = Window:MakeTab({
+        Name = "Set-world"
+    })
+
+    panTab:AddToggle({
+        Name = "1x(0 Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldspawn = Value
+            if AutoFarm.autoworldspawn then
+                spawn(autoworldspawn)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "1.5x(1k Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldsamurai = Value
+            if AutoFarm.autoworldsamurai then
+                spawn(autoworldsamurai)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "2x(25k Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldsavanna = Value
+            if AutoFarm.autoworldsavanna then
+                spawn(autoworldsavanna)
+            end
+        end
+    })
+
+
+    panTab:AddToggle({
+        Name = "3x(250k Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldcyber = Value
+            if AutoFarm.autoworldcyber then
+                spawn(autoworldcyber)
+            end
+        end
+    })
+    panTab:AddToggle({
+        Name = "5x(5m Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldtiki = Value
+            if AutoFarm.autoworldtiki then
+                spawn(autoworldtiki)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "8x(250M Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldvulcan = Value
+            if AutoFarm.autoworldvulcan then
+                spawn(autoworldvulcan)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "10x(25b Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldmagic = Value
+            if AutoFarm.autoworldmagic then
+                spawn(autoworldmagic)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "15x(10t Rebirth)",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autoworldheaven = Value
+            if AutoFarm.autoworldheaven then
+                spawn(autoworldheaven)
+            end
+        end
+    })
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    local panTab = Window:MakeTab({
+        Name = "Misc"
+    })
+    
+    panTab:AddToggle({
+        Name = "potion-click",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autousepotionclick = Value
+            if AutoFarm.autousepotionclick then
+                spawn(autousepotionclick)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "potion-luck",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autousepotionluck = Value
+            if AutoFarm.autousepotionluck then
+                spawn(autousepotionluck)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "potion-gem",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autousepotiongem = Value
+            if AutoFarm.autousepotiongem then
+                spawn(autousepotiongem)
+            end
+        end
+    })
+
+    panTab:AddToggle({
+        Name = "potion-rebirth",
+        Default = false,
+        Callback = function(Value)
+            AutoFarm.autousepotionrebirth = Value
+            if AutoFarm.autousepotionrebirth then
+                spawn(autousepotionrebirth)
+            end
+        end
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
 
