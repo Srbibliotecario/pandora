@@ -712,7 +712,25 @@ if game.PlaceId == 106142933228137 then
         end
     })
 
+    -- Adicionando Anti AFK
+   local isAntiAfkActive = false
+   local virtualUser = game:GetService("VirtualUser")
 
+ panTab:AddToggle({
+    Name = "Anti AFK",
+    Default = false,
+  Callback = function(Value)
+        isAntiAfkActive = Value
+        if isAntiAfkActive then
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                if isAntiAfkActive then
+                    virtualUser:CaptureController()
+                    virtualUser:ClickButton2(Vector2.new())
+                end
+            end)
+        end
+   end
+})
 
 
 
